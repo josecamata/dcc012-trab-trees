@@ -61,6 +61,9 @@ namespace Siga
             cout << "SIGA: " << this->n_estudantes << " estudantes importados" << endl;
         }
 
+        //TODO: criar a indexação do arquivo binário por matricula e nome:
+        //  Use os pares <matricula, idx> e <nome, idx> para indexar o arquivo binário, onde
+        //  idx é o endereço do registro do estudante no arquivo binário
         
     }
 
@@ -116,6 +119,7 @@ namespace Siga
     int Siga::PesquisaPorMatricula(int matricula)
     {
     
+        //TODO: modificar para usar a indexação por matricula
         file_stream.seekg(0, file_stream.beg);
         for (int i = 0; i < n_estudantes; i++)
         {
@@ -132,6 +136,7 @@ namespace Siga
     int Siga::PesquisaPorNome(string nome)
     {
     
+        //TODO: modificar para usar a indexação por nome
         file_stream.seekg(0, file_stream.beg);
         for (int i = 0; i < n_estudantes; i++)
         {

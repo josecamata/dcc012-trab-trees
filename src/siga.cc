@@ -2,14 +2,40 @@
 #include <sstream>
 #include <string>
 #include <cstring>
+#include <algorithm>
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
 #include "config.h"
 #include "siga.h"
+#include "sort.h"
+
 
 namespace Siga
 {
+
+    struct {
+    bool operator()(Estudante a, Estudante b) const
+    {
+        return std::strcmp(a.ObterNome(), b.ObterNome()) < 0;
+    }
+   } CompareName;
+
+    struct {
+    bool operator()(Estudante a, Estudante b) const
+    {
+        return a.ObterCurso() < b.ObterCurso();
+    }
+   } CompareCurso;
+
+       struct {
+    bool operator()(Estudante a, Estudante b) const
+    {
+        return a.ObterAnoIngresso() < b.ObterAnoIngresso();
+    }
+   } CompareAno;
 
     Siga::Siga()
     {
@@ -174,7 +200,7 @@ namespace Siga
 
     void Siga::SalvaCSV(string arquivo_csv, std::vector<Estudante> &estudantes)
     {
-        string arquivo_csv_path = INPUT_DATA_DIR + arquivo_csv;
+        string arquivo_csv_path = arquivo_csv;
         
         ofstream csv_file;
         csv_file.open(arquivo_csv_path);
@@ -183,15 +209,20 @@ namespace Siga
             cout << "Erro ao abrir arquivo CSV" << endl;
             return;
         }
+
+        Sort::MergeSort(estudantes, CompareName);
+        Sort::BasicSort(estudantes, CompareAno);
+        Sort::BasicSort(estudantes, CompareCurso);
+
         csv_file << "matricula,nome,ano_ingresso,semestre_ingresso,curso,ira" << endl;
         for (int i = 0; i < estudantes.size(); i++)
         {
-            csv_file << estudantes[i].ObterMatricula() << ","
-                     << estudantes[i].ObterNome() << ","
-                     << estudantes[i].ObterAnoIngresso() << ","
-                     << estudantes[i].ObterSemestreIngresso() << ","
-                     << estudantes[i].ObterCurso() << ","
-                     << estudantes[i].ObterIRA() << endl;
+            csv_file << setw(10) << left << estudantes[i].ObterMatricula() << ","
+                     << setw(20) << left << estudantes[i].ObterNome()       << ","
+                     << setw(5)  << left << estudantes[i].ObterAnoIngresso() << ","
+                     << setw(5 ) << left << estudantes[i].ObterSemestreIngresso() << ","
+                     << setw(5) << left << estudantes[i].ObterCurso() << ","
+                     << setw(10) << left << setprecision(2) << fixed << estudantes[i].ObterIRA() << endl;  
         }
 
         csv_file.close();
@@ -233,6 +264,15 @@ namespace Siga
         for (int i = 0; i < idxs.size(); i++)
         {
             this->LeiaEstudante(idxs[i], list[i]);
+        }
+    }
+
+    void Siga::ExtraiaEstudantes(std::vector<Estudante> &list)
+    {
+        list.resize(this->n_estudantes);
+        for (int i = 0; i < this->n_estudantes; i++)
+        {
+            this->LeiaEstudante(i, list[i]);
         }
     }
 

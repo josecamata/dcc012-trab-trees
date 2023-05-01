@@ -27,6 +27,7 @@ class Siga
         void SalvaCSV(string arquivo_txt, std::vector<Estudante> &estudante);                  // salvar a lista de estudantes em um arquivo texto formatado CSV
         int  ObterNumeroEstudantes();                       // retorna o numero de estudantes na base de dados
         void ExtraiaEstudantes(std::vector<int> idxs, std::vector<Estudante> &list); // extrai estudantes com endereços idx da base de dados para um vetor de estudantes
+        void ExtraiaEstudantes(std::vector<Estudante> &list); // extrai todos os estudantes da base de dados para um vetor de estudantes
         ~Siga();
     private:
         // atributos

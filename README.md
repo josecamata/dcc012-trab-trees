@@ -11,8 +11,7 @@ Espera-se que ao final desta atividade você seja capaz de indexar e recuperar i
 Nesta atividades, continuaremos a aprimorar o nosso sistema SIGA. 
 Além de manipular o cadastro de informações de estudantes em um arquivo binário, iremos agora indexá-lo 
 baseados em uma determinada chave de comparação. Nosso objetivo aqui é melhorar nosso algoritmo de busca que atualmente
-tem custo linear para um versão com custo logaritmico. 
-
+tem custo linear para um versão com custo logaritmico usando arvores balanceadas.
 ### O que deve ser feito:
 
 1. Implementar arvore Vermelho-Preto

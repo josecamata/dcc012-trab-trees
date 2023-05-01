@@ -1,65 +1,21 @@
+#include "estudante.h"
 #include "siga.h"
 #include "tools.h"
+using namespace Siga;
 
 void print_menu()
 {
     cout << "SIGA - Sistema de Gestão Acadêmica" << endl;
     cout << "-----------------------------------" << endl;
     cout << "1. Inserir estudante" << endl;
-    cout << "2. Buscar estudante" << endl;
-    cout << "3. Sair" << endl;
+    cout << "2. Buscar estudante Por Nome" << endl;
+    cout << "3. Buscar estudante Por Matricula" << endl;
+    cout << "4. Sair" << endl;
     cout << "Digite sua opção: ";
 }
 
-void print_busca()
+Estudante Getting_Estudante()
 {
-    int opcao_busca;
-
-   do{
-        cout << "SIGA - Sistema de Gestão Acadêmica" << endl;
-        cout << "-----------------------------------" << endl;
-        cout << "1. Buscar por matrícula" << endl;
-        cout << "2. Buscar por nome" << endl;
-        cout << "3. Voltar" << endl;
-        cout << "Digite sua opção: "; 
-        cin >> opcao_busca;
-        switch(opcao_busca)
-        {
-            case 1:
-                int matricula;
-                cout << "Digite a matrícula: ";
-                cin >> matricula;
-                int idx = siga.PesquisaPorMatricula(matricula);
-                if(idx>=0){
-                    Estudante estudante = siga.ObterEstudante(idx);
-                    estudante.Imprimir();
-                }
-               
-                break;
-                        
-            case 2:
-                std::string nome;
-                cout << "Digite o nome: ";
-                cin >> nome;
-                int idx = siga.PesquisaPorNome(nome.c_str());
-                if(idx>=0){
-                    Estudante estudante = siga.ObterEstudante(idx);
-                    estudante.Imprimir();
-                }
-                break;
-            case 3:
-                break;
-            default:
-                cout << "Opção inválida!" << endl;
-                break;
-        }
-    }while(opcao_busca!=3);
-}
-
-
-Estudante print_read_estudante()
-{
-    Estudante estudante;
     int matricula;
     std::string nome;
     int curso;
@@ -96,18 +52,52 @@ int main(int argc, const char* argv[])
         switch(opcao)
         {
             case 1:
-                 Estudante estudante = print_read_estudante();
-                siga.InserirEstudante(estudante);
+            {
+                Estudante estudante = Getting_Estudante();
+                siga.AdicionaEstudante(estudante);
                 break;
+            }
             case 2:
-                print_busca();
+            {
+                int matricula;
+                cout << "Digite a matrícula: ";
+                cin >> matricula;
+                int idx = siga.PesquisaPorMatricula(matricula);
+                if (idx != -1)
+                {
+                    Estudante est = siga.ObterEstudante(idx);
+                   est.Imprimir();
+                }
+                else
+                {
+                    cout << "Estudante não encontrado" << endl;
+                }
                 break;
+            }
             case 3:
+            {
+                    string nome;
+                    cout << "Digite o nome: ";
+                    cin >> nome;
+                    int idx = siga.PesquisaPorNome(nome);
+                    if (idx != -1)
+                    {
+                        Estudante est = siga.ObterEstudante(idx);
+                        est.Imprimir();
+                    }
+                    else
+                    {
+                        cout << "Estudante não encontrado" << endl;
+                    }
+            
                 break;
-            default:   
+            }
+            case 4:
+                break;
+            default:
                 cout << "Opção inválida!" << endl;
                 break;
-        }
-    }while(opcao!=3)
+        }       
+    }while(opcao!=3);
     return 0;
 }

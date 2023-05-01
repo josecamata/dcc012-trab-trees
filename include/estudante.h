@@ -6,7 +6,7 @@
 using namespace std;
 
 #define STR_MAX_SIZE 128
-#define ESTUDANTE_SIZE (sizeof(char)*STR_MAX_SIZE + 2*sizeof(int) + sizeof(float))
+
 namespace Siga 
 {
 class Estudante

@@ -27,6 +27,7 @@ namespace Perf
             void increment_swaps();
             unsigned int get_comparisons();
             unsigned int get_swaps();
+            void reset();
         private:
             unsigned int n_comparisons;
             unsigned int n_swaps;
@@ -37,7 +38,7 @@ namespace Perf
         public:
             Performance();
             PerformanceCounter& get_counter();
-            PerformanceTimer& get_timer();
+            PerformanceTimer&    get_timer();
         private:
             PerformanceTimer timer;
             PerformanceCounter counter;

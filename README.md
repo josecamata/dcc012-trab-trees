@@ -14,23 +14,22 @@ baseados em uma determinada chave de comparação. Nosso objetivo aqui é melhor
 tem custo linear para um versão com custo logaritmico usando arvores balanceadas.
 ### O que deve ser feito:
 
-1. Implementar arvore Vermelho-Preto
-2. Implementar arvore B
+1. Implementar árvore Vermelho-Preto
+2. Implementar árvore B de ordem k.
 
 Em ambas estruturas, as seguintes rotinas devem ser implementadas:
 * Inserção
 * Busca
 * Remoção
 
-
 ### Etapas:
 
 1. Copiar as rotinas do ordenação no arquivo [sort.h](include/sort.h) que foram desenvolvidas na atividada prática anterior.
-2. Implementar no arquivo [rb_tree.h](include/rb_tree.h) o tipo abstrato de dados árvore vermelho-preto
-3. Implementar no arquivo [b_tree.h](include/b_tree.h) o tipo abstrato de dados árvore B
+2. Implementar no arquivo [rb_tree.h](include/rb_tree.h) o tipo abstrato de dados árvore vermelho-preto.
+3. Implementar no arquivo [b_tree.h](include/b_tree.h) o tipo abstrato de dados árvore B.
 4. Implementar rotinas de testes definidos na pasta tests. 
 5. Implementar o programa de análise de desempenho [desempenho.cc](app/performance.cc). Seguir as indicações nas marcações **TODO** no arquivo.
-6. Implementar a indexação indexação dos estudantes por nome e turma, no siga.cc. Novamente, vocês devem seguir as marcações **TODO** no arquivo. A indexação deve gerar permitir realizar a busca tanto por nome quanto por matricula.
+6. Implementar a indexação indexação dos estudantes por nome e turma, no [siga.cc](src/siga.cc). Novamente, vocês devem seguir as marcações **TODO** no arquivo. A indexação deve permitir realizar a busca tanto por nome quanto por matricula.
 
 ## Organização do Projeto 
 
@@ -58,7 +57,6 @@ app
 
 **IMPORTANTE**
  - Detalhes do que deve ser feito encontram-se no arquivos fontes sob a tag **TODO**.
- - Os arquivos da pasta tests não devem ser modificados.
  - Os arquivos serão lidos ou criados na pasta [tests/data](tests/data)
  - Fiquem a vontade para alterar ou adicionar outras ferramentas nos arquivos [tools.h](include/tools.h) e [tools.cc](src/tools.cc)
 
@@ -80,7 +78,7 @@ Para a compilação em ambiente Unix/linux, use o comando:
   ```
     cmake ../.
   ```
-  - Compile os testes:
+  - Compile o código:
   
   ```
     make 
@@ -98,13 +96,11 @@ Para a compilação em ambiente Unix/linux, use o comando:
 
   ```
   
-  - Para rodar a classificação:
+  - Para rodar a busca:
    ```
     ./app/pesquisa
     
   ```
-
-*Importante:* Entre uma chamadas do ctest, remova o arquivo estudantes.bin da pasta tests/data.
 
 ## 📝 Entrega
 

@@ -1,6 +1,7 @@
 #include <cassert>
 #include <sstream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -103,7 +104,7 @@ namespace Siga
             getline(ss, token, ','); // semestre_ingresso
             est.TrocarSemestreIngresso(stoi(token));
             getline(ss, token, ','); // curso
-            est.TrocarCurso(token.c_str());
+            est.TrocarCurso(stoi(token));
             getline(ss, token); // ira
             est.TrocarIRA(stof(token));
 
@@ -141,7 +142,7 @@ namespace Siga
         for (int i = 0; i < n_estudantes; i++)
         {
             Estudante est = ObterEstudante(i);
-            if (strcmp(est.ObterNome, nome.c_str()) == 0)
+            if (std::strcmp(est.ObterNome(), nome.c_str()) == 0)
             {
                 return i;
             }

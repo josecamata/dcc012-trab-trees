@@ -61,6 +61,12 @@ namespace Perf
         return n_swaps;
     }
 
+    void PerformanceCounter::reset()
+    {
+        n_comparisons = 0;
+        n_swaps = 0;
+    }
+
     Performance::Performance():
         timer(),
         counter()

@@ -26,9 +26,11 @@ Em ambas estruturas, as seguintes rotinas devem ser implementadas:
 ### Etapas:
 
 1. Copiar as rotinas do ordenação no arquivo [sort.h](include/sort.h) que foram desenvolvidas na atividada prática anterior.
-2. Verificar se as rotinas passam nos testes definidos na pasta tests. Observem como os testes foram feitos e implementados. Há alguma falha neles?
-3. Implementar o programa de análise de desempenho [desempenho.cc](app/performance.cc). Seguir as indicações nas marcações **TODO** no arquivo.
-4. Implementar a indexação indexação dos estudantes por nome e turma, no siga.cc. Novamente, vocês devem seguir as marcações **TODO** no arquivo. A indexação deve gerar permitir realizar a busca tanto por nome quanto por matricula.
+2. Implementar no arquivo [rb_tree.h](include/rb_tree.h) o tipo abstrato de dados árvore vermelho-preto
+3. Implementar no arquivo [b_tree.h](include/b_tree.h) o tipo abstrato de dados árvore B
+4. Implementar rotinas de testes definidos na pasta tests. 
+5. Implementar o programa de análise de desempenho [desempenho.cc](app/performance.cc). Seguir as indicações nas marcações **TODO** no arquivo.
+6. Implementar a indexação indexação dos estudantes por nome e turma, no siga.cc. Novamente, vocês devem seguir as marcações **TODO** no arquivo. A indexação deve gerar permitir realizar a busca tanto por nome quanto por matricula.
 
 ## Organização do Projeto 
 

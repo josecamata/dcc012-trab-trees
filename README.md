@@ -14,6 +14,7 @@ baseados em uma determinada chave de comparação. Nosso objetivo aqui é melhor
 tem custo linear para um versão com custo logaritmico usando arvores balanceadas.
 ### O que deve ser feito:
 
+1. Implementar árvore AVL
 1. Implementar árvore Vermelho-Preto
 2. Implementar árvore B de ordem k.
 

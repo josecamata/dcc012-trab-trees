@@ -84,8 +84,7 @@ namespace Siga
         // matricula,nome,ano_ingresso,semestre_ingresso,curso,ira
         getline(csv_file, line);
 
-        // TODO: Altere esse codigo para ler os campos extras do arquivo CSV de entrada.
-        // Para cada linha de dados
+        
         while (getline(csv_file, line))
         {
             // Ler um estudante do arquivo CSV
@@ -98,6 +97,10 @@ namespace Siga
             est.TrocarNome(token.c_str());
             getline(ss, token, ','); // ano_ingresso
             est.TrocarAnoIngresso(stoi(token));
+            getline(ss, token, ','); // semestre_ingresso
+            est.TrocarSemestreIngresso(stoi(token));
+            getline(ss, token, ','); // curso
+            est.TrocarCurso(token.c_str());
             getline(ss, token); // ira
             est.TrocarIRA(stof(token));
 
@@ -112,21 +115,55 @@ namespace Siga
 
     int Siga::PesquisaPorMatricula(int matricula)
     {
-        // TODO: Cópie o codigo da atividade passada aqui
-        
+    
+        file_stream.seekg(0, file_stream.beg);
+        for (int i = 0; i < n_estudantes; i++)
+        {
+            Estudante est = ObterEstudante(i);
+            if (est.ObterMatricula() == matricula)
+            {
+                return i;
+            }
+        }
+    
+        return -1;
+    }
 
+    int Siga::PesquisaPorNome(string nome)
+    {
+    
+        file_stream.seekg(0, file_stream.beg);
+        for (int i = 0; i < n_estudantes; i++)
+        {
+            Estudante est = ObterEstudante(i);
+            if (strcmp(est.ObterNome, nome.c_str()) == 0)
+            {
+                return i;
+            }
+        }
+    
         return -1;
     }
 
     void Siga::AdicionaEstudante(Estudante est)
     {
-        // TODO: Cópie o codigo da atividade passada aqui
-
+       
+        if (PesquisaPorMatricula(est.ObterMatricula()) != -1)
+        {
+            cout << "Estudante já existe" << endl;
+            return;
+        }
+        this->EscrevaEstudante(this->n_estudantes, est);
+        this->n_estudantes++;
     }
 
     Estudante Siga::ObterEstudante(int idx)
     {
-        // TODO: Cópie o codigo da atividade passada aqui
+       
+        Estudante est;
+        this->LeiaEstudante(idx, est);
+        return est;
+
     }
 
     void Siga::SalvaCSV(string arquivo_csv, std::vector<Estudante> &estudantes)
@@ -156,8 +193,7 @@ namespace Siga
 
     void Siga::AlteraCadastroEstudante(int idx, Estudante est)
     {
-        // TODO: Cópie o codigo da atividade passada aqui
-        
+        this->EscrevaEstudante(idx, est);
     }
 
     Siga::~Siga()

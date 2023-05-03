@@ -93,13 +93,13 @@ Para a compilação em ambiente Unix/linux, use o comando:
   
   - Para rodar o estudo de desempenho:
    ```
-    ./app/performance
+    ./performance
 
   ```
   
   - Para rodar a busca:
    ```
-    ./app/pesquisa
+    ./pesquisa
     
   ```
 
